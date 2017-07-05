@@ -16,14 +16,14 @@
     
     <mu-content-block class="has-header has-footer content-list" style="padding-top:0;">
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
-      <mu-list>
+      <div>
         <template v-for="item in list">
           <mu-list-item disableRipple :title="item.name" :describeText="item.gender | filter-gender">
             <mu-avatar :src="head" slot="leftAvatar"/>
           </mu-list-item>
           <mu-divider/>
         </template>
-      </mu-list>
+      </div>
       <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="拼命加载中..."/>
     </mu-content-block>
   </div>

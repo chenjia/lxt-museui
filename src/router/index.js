@@ -49,6 +49,11 @@ const router = new Router({
         component: function (resolve) {
           require(['../components/Chart.vue'], resolve)
         }
+      }, {
+        path: 'contact',
+        component: function (resolve) {
+          require(['../components/Contact.vue'], resolve)
+        }
       }]
     }
   ]

@@ -14,15 +14,18 @@ Vue.directive('echarts', {
     require('echarts/lib/component/tooltip')
     require('echarts/lib/component/title')
     require('echarts/lib/component/legend')
-    // var width = binding.value.width || 300
-    // var height = binding.value.height || width * 0.8
-    // el.style.width = width + 'px'
-    // el.style.height = height + 'px'
+    var width = el.style.width || el.parentNode.offsetWidth
+    var height = el.style.height || el.parentNode.offsetHeight
+    el.style.width = width + 'px'
+    el.style.height = height + 'px'
     echarts.registerMap('china', chinaJson)
-    var myChart = echarts.init(el, 'macarons')
-    myChart.setOption(binding.value)
+    const myChart = echarts.init(el, 'macarons')
+    myChart.setOption(binding.value.options, true)
   },
-  update: function () {
-    alert(123)
+  update: function (el, binding) {
+    if (JSON.stringify(binding.value) !== JSON.stringify(binding.oldValue)) {
+      const myChart = echarts.init(el, 'macarons')
+      myChart.setOption(binding.value.options, true)
+    }
   }
 })

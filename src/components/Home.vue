@@ -48,13 +48,13 @@
     </mu-popover>
     <mu-content-block class="has-header has-footer" style="padding-top:0;padding-left:0;padding-right:0;">
       <swipe class="swipe-home">
-        <swipe-item class="slide1">
+        <swipe-item>
           <img src="../assets/banner1.jpg">
         </swipe-item>
-        <swipe-item class="slide1">
+        <swipe-item>
           <img src="../assets/banner2.jpg">
         </swipe-item>
-        <swipe-item class="slide1">
+        <swipe-item>
           <img src="../assets/banner3.jpg">
         </swipe-item>
       </swipe>
@@ -74,7 +74,7 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
+            <div @click="go('contact')">
               <mu-icon value="perm_contact_calendar" color="#da70d6"/>
               <span>通讯录</span>
             </div>

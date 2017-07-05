@@ -6,20 +6,29 @@
     </mu-appbar>
 
     <mu-content-block class="has-header has-footer" v-bind:style="{height:contentHeight+'px'}">
-      <div style="width:100px;height:100px;" v-echarts="{options: barOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-
-      <div style="width:100px;height:100px;" v-echarts="{options: lineOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-
-      <div style="width:100px;height:100px;" v-echarts="{options: pieOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-
-      <div style="width:100px;height:100px;" v-echarts="{options: radarOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-      
-      <div style="width:100px;height:100px;" v-echarts="{options: funnelOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-      
-      <div style="width:100px;height:100px;" v-echarts="{options: gaugeOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-      <button @click="trigger">test</button>
-      <div style="width:100px;height:100px;" v-echarts="{options: mapOptions, width: screenWidth-20, height: screenWidth*0.8}"></div>
-    
+      <swipe class="swipe-home" :auto="auto">
+        <swipe-item>
+          <div v-echarts="{options: barOptions}"v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: lineOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: pieOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: radarOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: funnelOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: gaugeOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+        <swipe-item>
+          <div v-echarts="{options: mapOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+        </swipe-item>
+      </swipe>
     </mu-content-block>
   </div>
 </template>
@@ -31,6 +40,7 @@
     name: 'chart',
     data () {
       return {
+        auto: 99999,
         state: true,
         screenWidth: window.config.screenWidth,
         contentHeight: window.config.contentHeight(true),
@@ -357,8 +367,33 @@
     methods: {
       trigger () {
         this.state = !this.state
-        this.gaugeOptions.series[0].data[0].value = 87
       }
+    },
+    mounted: function () {
+      setInterval(() => {
+        this.gaugeOptions = {
+          tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+          },
+          toolbox: {
+            feature: {
+              restore: {},
+              saveAsImage: {}
+            }
+          },
+          series: [{
+            name: '业务指标',
+            type: 'gauge',
+            detail: {
+              formatter: '{value}%'
+            },
+            data: [{
+              value: parseInt(Math.random() * 100, 10),
+              name: '完成率'
+            }]
+          }]
+        }
+      }, 2000)
     }
   }
 </script>

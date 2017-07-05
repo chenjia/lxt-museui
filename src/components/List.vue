@@ -4,6 +4,15 @@
       <mu-icon-button @click="goBack" icon="chevron_left" slot="left"/>
       <mu-icon-button @click="showSearch" icon="search" slot="right"/>
     </mu-appbar>
+
+    <mu-dialog :open="openSearch" @close="closeSearch">
+      <div style="position:relative;margin-bottom:50px;">
+        <mu-appbar title="搜索"></mu-appbar>
+      </div>
+      <p>fjewifwjeiofwejfio</p>
+      <mu-flat-button slot="actions" icon="clear" @click="closeSearch" label="取消"/>
+      <mu-flat-button slot="actions" icon="done" @click="closeSearch" label="确定" primary/>
+    </mu-dialog>
     
     <mu-content-block class="has-header has-footer content-list" style="padding-top:0;">
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
@@ -17,15 +26,6 @@
       </mu-list>
       <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="拼命加载中..."/>
     </mu-content-block>
-
-    <mu-dialog :open="openSearch" @close="closeSearch">
-      <div style="position:relative;margin-bottom:50px;">
-        <mu-appbar title="搜索"></mu-appbar>
-      </div>
-      <p>fjewifwjeiofwejfio</p>
-      <mu-flat-button slot="actions" icon="clear" @click="closeSearch" label="取消"/>
-      <mu-flat-button slot="actions" icon="done" @click="closeSearch" label="确定" primary/>
-    </mu-dialog>
   </div>
 </template>
 

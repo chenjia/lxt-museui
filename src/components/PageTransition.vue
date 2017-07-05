@@ -49,7 +49,7 @@
     top:0;
     width:100%;
     height:100%;
-    transition: all .1s ease-out;
+    transition: all .2s ease-out;
   }
   .slide-left-enter, .slide-right-leave-active {
     opacity: 0;

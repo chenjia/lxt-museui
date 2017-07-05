@@ -8,7 +8,7 @@
     <mu-content-block class="has-header has-footer" v-bind:style="{height:contentHeight+'px'}">
       <swipe class="swipe-home" :auto="auto">
         <swipe-item>
-          <div v-echarts="{options: barOptions}"v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts="{options: barOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
           <div v-echarts="{options: lineOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>

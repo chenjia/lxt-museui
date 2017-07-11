@@ -6,7 +6,7 @@
     </mu-appbar>
 
     <mu-content-block class="has-header has-footer">
-      <div v-for="item in productList">
+      <div v-for="item in getProductList">
         <p>{{item.name}}</p>
       </div>
       <p>
@@ -17,25 +17,28 @@
 </template>
 
 <script>
+  import productData from '../../static/data/product.json'
+
   export default {
     name: 'test',
     data () {
       return {
-        productList: []
+        
       }
     },
     methods: {
-      getProductList () {
-        return this.$store.state.productList
-      },
       getHotProductList () {
-        this.productList = this.$store.getters.getHotProductList
-        console.log(this.productList)
+        console.log(this.$store)
+        this.$store.state.common.productList = this.$store.getters.getHotProductlist
+      }
+    },
+    computed:{
+      getProductList () {
+        return this.$store.state.common.productList
       }
     },
     mounted () {
-      this.productList = this.getProductList()
-      console.log(this.productList)
+      console.log(productData)
     }
   }
 </script>

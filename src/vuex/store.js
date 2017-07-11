@@ -1,28 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import * as actions from './actions'
-import * as getters from './getters'
-// import cart from './modules/cart'
-// import products from './modules/products'
+import common from './modules/common'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  actions,
-  getters,
-  state: {
-    productList: [{
-      name: 'product A',
-      price: 18,
-      isHot: true
-    }, {
-      name: 'product B',
-      price: 28,
-      isHot: false
-    }, {
-      name: 'product C',
-      price: 38,
-      isHot: true
-    }]
+  modules: {
+    common: common
   }
 })

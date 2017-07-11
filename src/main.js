@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from './vuex/store'
+import axios from 'axios'
 import router from './routers'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
@@ -19,6 +20,7 @@ Vue.use(finger)
 Vue.component('swipe', Swipe)
 Vue.component('swipe-item', SwipeItem)
 Vue.config.productionTip = false
+Vue.prototype.$http = axios
 
 new Vue({
 	el: '#app',

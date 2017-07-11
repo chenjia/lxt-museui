@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import store from './vuex/store'
+import router from './routers'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-themes/theme-default.min.css'
@@ -10,7 +11,7 @@ import {
 	SwipeItem
 } from 'vue-swipe'
 import '@/assets/css/main.css'
-import '@/filter/globalFilter.js'
+import '@/filters/globalFilter.js'
 import finger from '@/directives/finger.js'
 
 Vue.use(MuseUI)
@@ -22,6 +23,7 @@ Vue.config.productionTip = false
 new Vue({
 	el: '#app',
 	router,
+	store,
 	template: '<App/>',
 	components: {
 		App

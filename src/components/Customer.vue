@@ -51,7 +51,7 @@
         refreshing: false,
         trigger: null,
         loaded: false,
-        contentHeight: window.config.contentHeight(true, true),
+        contentHeight: window.globalConfig.contentHeight(true, true),
         activeTab: 'tab1'
       }
     },

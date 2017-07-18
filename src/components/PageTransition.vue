@@ -4,7 +4,7 @@
     <transition :name="transitionName">
       <router-view class="child-view"></router-view>
     </transition>
-    <mu-paper v-show="hasFooter" style="position:fixed;bottom:0;width:100%;">
+    <mu-paper v-show="$store.state.common.hasFooter" style="position:fixed;bottom:0;width:100%;">
       <mu-bottom-nav :value="bottomNav" @change="handleChange" style="height:48px;">
         <mu-bottom-nav-item href="#/page/home" value="home" title="首页" icon="home"/>
         <mu-bottom-nav-item href="#/page/customer" value="customer" title="客户" icon="person"/>
@@ -15,12 +15,12 @@
 </template>
 
 <script>
+
   export default {
     data () {
       return {
         transitionName: 'slide-left',
         bottomNav: 'home',
-        hasFooter: true,
         screenWidth: document.documentElement.clientWidth,
         screenHeight: document.documentElement.clientHeight
       }
@@ -39,6 +39,9 @@
       }
       this.$router.isBack = false
       next()
+    },
+    mounted () {
+      
     }
   }
 </script>

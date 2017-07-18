@@ -10,7 +10,7 @@ Vue.use(Router)
 const router = new Router({
   routes: [{
     path: '/',
-    redirect: '/page/home'
+    redirect: '/page/login'
   }, {
     path: '/page',
     name: 'page',

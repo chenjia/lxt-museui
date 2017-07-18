@@ -94,7 +94,7 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
+            <div @click="go('login')">
               <mu-icon value="lock_outline" color="#ff69b4"/>
               <span>登录</span>
             </div>
@@ -120,9 +120,9 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
-              <i style="color:#40e0d0"></i><br/>
-              <span></span>
+            <div @click="go('test')">
+              <mu-icon value="build" color="#ffa500"/>
+              <span>测试</span>
             </div>
           </td>
           <td>
@@ -143,11 +143,12 @@ import light from '!raw-loader!muse-themes/theme-light.min.css'
 import dark from '!raw-loader!muse-themes/theme-dark.min.css'
 import carbon from '!raw-loader!muse-themes/theme-carbon.min.css'
 import teal from '!raw-loader!muse-themes/theme-teal.min.css'
+
 export default {
   name: 'home',
   data () {
     return {
-      contentHeight: window.config.contentHeight(true, true),
+      contentHeight: window.globalConfig.contentHeight(true, true),
       theme: 'default',
       themes: {
         dft,

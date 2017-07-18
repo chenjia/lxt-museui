@@ -17,8 +17,6 @@
 </template>
 
 <script>
-  import productData from '../../static/data/product.json'
-
   export default {
     name: 'test',
     data () {
@@ -28,7 +26,6 @@
     },
     methods: {
       getHotProductList () {
-        console.log(this.$store)
         this.$store.state.common.productList = this.$store.getters.getHotProductlist
       }
     },
@@ -38,7 +35,7 @@
       }
     },
     mounted () {
-      console.log(productData)
+      
     }
   }
 </script>

@@ -17,7 +17,7 @@
     data () {
       return {
         state: true,
-        contentHeight: window.config.contentHeight(true),
+        contentHeight: window.globalConfig.contentHeight(true),
         msg: 'About page'
       }
     },
@@ -25,6 +25,9 @@
       trigger () {
         this.state = !this.state
       }
+    },
+    mounted () {
+      this.$store.commit('TOGGLE_TAB', true)
     }
   }
 </script>

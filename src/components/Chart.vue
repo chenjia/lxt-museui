@@ -42,8 +42,8 @@
       return {
         auto: 99999,
         state: true,
-        screenWidth: window.config.screenWidth,
-        contentHeight: window.config.contentHeight(true),
+        screenWidth: window.globalConfig.screenWidth,
+        contentHeight: window.globalConfig.contentHeight(true),
         barOptions: {
           tooltip: {},
           xAxis: {
@@ -370,6 +370,7 @@
       }
     },
     mounted: function () {
+      this.$store.commit('TOGGLE_TAB', false)
       setInterval(() => {
         this.gaugeOptions = {
           tooltip: {

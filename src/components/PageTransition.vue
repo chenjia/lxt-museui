@@ -4,13 +4,15 @@
     <transition :name="transitionName">
       <router-view class="child-view"></router-view>
     </transition>
-    <mu-paper v-show="$store.state.common.hasFooter" style="position:fixed;bottom:0;width:100%;">
-      <mu-bottom-nav :value="bottomNav" @change="handleChange" style="height:48px;">
-        <mu-bottom-nav-item href="#/page/home" value="home" title="首页" icon="home"/>
-        <mu-bottom-nav-item href="#/page/customer" value="customer" title="客户" icon="person"/>
-        <mu-bottom-nav-item href="#/page/about" value="about" title="我的" icon="face"/>
-      </mu-bottom-nav>
-    </mu-paper>
+    <transition name="slide-up">
+      <mu-paper v-show="$store.state.common.hasFooter" class="footer-tabs">
+        <mu-bottom-nav :value="bottomNav" @change="handleChange" style="height:48px;">
+          <mu-bottom-nav-item href="#/page/home" value="home" title="首页" icon="home"/>
+          <mu-bottom-nav-item href="#/page/customer" value="customer" title="客户" icon="person"/>
+          <mu-bottom-nav-item href="#/page/about" value="about" title="我的" icon="face"/>
+        </mu-bottom-nav>
+      </mu-paper>
+    </transition>
   </div>
 </template>
 
@@ -53,15 +55,5 @@
     width:100%;
     height:100%;
     transition: all .1s ease-out;
-  }
-  .slide-left-enter, .slide-right-leave-active {
-    opacity: 0;
-    -webkit-transform: translate(50px, 0);
-    transform: translate(50px, 0);
-  }
-  .slide-left-leave-active, .slide-right-enter {
-    opacity: 0;
-    -webkit-transform: translate(-50px, 0);
-    transform: translate(-50px, 0);
   }
 </style>

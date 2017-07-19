@@ -2,7 +2,7 @@
   <div class="page">
     <mu-appbar title="首页">
       <mu-icon-button icon="menu" slot="left" @click="openMenu('left')"/>
-      <mu-icon-button icon="expand_more" slot="right" ref="buttonThemes" @click="toggleThemes"/>
+      <mu-icon-button icon="color_lens" slot="right" ref="buttonThemes" @click="toggleThemes"/>
     </mu-appbar>
     <mu-popup position="left" popupClass="demo-popup-left" :open="leftPopup" @close="closeMenu('left')">
       <mu-appbar title="菜单">
@@ -80,7 +80,7 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
+            <div @click="go('form')">
               <mu-icon value="description" color="#32cd32"/>
               <span>表单</span>
             </div>
@@ -88,7 +88,7 @@
         </tr>
         <tr>
           <td>
-            <div v-bind:href="'#/page/list'">
+            <div @click="go('customer')">
               <mu-icon value="tab" color="#6495ed"/>
               <span>选项卡</span>
             </div>
@@ -199,6 +199,7 @@ export default {
     }
   },
   mounted () {
+    this.$store.commit('TOGGLE_TAB', true)
     this.triggerThemes = this.$refs.buttonThemes.$el
   }
 }

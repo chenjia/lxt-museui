@@ -5,7 +5,7 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
     
-    <mu-content-block class="has-header has-footer content-contact" style="padding-top:5px;">
+    <mu-content-block class="has-header content-contact" style="padding-top:5px;" v-bind:style="{height:contentHeight+'px'}">
       <mu-text-field style="width:100%;" v-model="m.searchKey" hintText="输入联系人姓名查找"/>
       <mu-sub-header style="line-height:22px">常用联系人</mu-sub-header>
       <template v-for="item in contactData.hot">
@@ -13,10 +13,9 @@
       </template>
       <mu-divider style="margin-top:20px;"/>
       <template v-for="(value, key, index)  in filterContact">
-        <mu-sub-header>{{key}}</mu-sub-header>
+        <mu-sub-header :id="key" style="height:20px;line-height:40px;font-size:18px;">{{key}}</mu-sub-header>
         <template v-for="item in value">
-          <mu-divider/>
-          <mu-list-item disableRipple :title="item.name" :describeText="'18702189255'">
+          <mu-list-item style="margin-left:20px;" disableRipple :title="item.name" :describeText="'18702189255'">
             <mu-avatar :src="head" slot="leftAvatar"/>
             <mu-icon value="chevron_right" slot="right"/>
           </mu-list-item>
@@ -29,8 +28,8 @@
       {{alias}}
     </div>
     <ul class="alias" id="draggableAlias">
-      <li style="min-height:4.5%;" a="{methods：selectAlias , arg: index}"><mu-icon value="star" :size="14"/></li>
-      <li style="min-height:4.5%;" v-for="(item, index) in aliasList" v-if="index!=0" a="{methods：selectAlias , arg: index}" on-drag="vc.selectAlias($event,$index)">{{item}}</li>
+      <li style="min-height:4.5%;" @click="selectAlias(0)"><mu-icon value="star" :size="14"/></li>
+      <li style="min-height:4.5%;" v-for="(item, index) in aliasList" v-if="index!=0" @click="selectAlias(index)" on-drag="vc.selectAlias($event,$index)">{{item}}</li>
     </ul>
   </div>
 </template>
@@ -58,27 +57,16 @@
         loaded: false,
         aliasToast: false,
         contactData: contactData,
-        contentWidth: window.config.screenWidth,
-        contentHeight: window.config.contentHeight(true, true),
+        contentWidth: window.globalConfig.screenWidth,
+        contentHeight: window.globalConfig.contentHeight(true, false),
         activeTab: 'tab1',
         aliasList: ['热', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'W', 'X', 'Y', 'Z']
       }
     },
     mounted () {
+      this.$store.commit('TOGGLE_TAB', false)
       this.scroller = document.getElementsByClassName('content-contact')[0]
       this.trigger = this.$el
-      // document.addEventListener('deviceready', () => {
-      //   let fields = [navigator.contacts.fieldType.title, navigator.contacts.fieldType.phoneNumbers, navigator.contacts.fieldType.formatted, navigator.contacts.fieldType.familyName, navigator.contacts.fieldType.nickname, navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.name]
-
-      //   navigator.contacts.find(fields, (contacts) => {
-      //     console.log(contacts)
-      //     this.list2 = contacts
-      //   }, (contactError) => {
-      //     console.log(contactError)
-      //     alert('Error')
-      //   })
-      // }, false)
-
       for(var i=0;i<10;i++){
         this.list2.push({displayName:'chenjia'+i, phoneNumbers:[{value:'18702189255'}]})
       }
@@ -96,13 +84,14 @@
           this.loading = false
         }, 2000)
       },
-      selectAlias (event, index) {
+      selectAlias (index) {
         this.alias = this.aliasList[index]
-        console.log(this.alias)
         this.aliasToast = true
         setTimeout(() => {
             this.aliasToast = false
         }, 2000)
+        let element = document.querySelector('#'+this.alias);
+        this.scroller.scrollTop = element.offsetTop
       }
     },
     computed: {

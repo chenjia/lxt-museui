@@ -2,7 +2,7 @@
   <div class="page">
     <mu-appbar title="登录">
       <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
-      <mu-icon-button disabled slot="right"/>
+      <mu-icon-button @click="lockScreen(true)" icon="lock" slot="right"/>
     </mu-appbar>
 
     <mu-content-block class="has-header has-footer">
@@ -25,21 +25,31 @@
           <mu-raised-button style="width:100%;" slot="actions" primary @click="toggleDialog(false)" label="确定"/>
         </div>
     </mu-dialog>
+
+    <mu-dialog dialogClass="dialog-lock" bodyClass="dialog-body" :open="isLockScreen" @close="lockScreen(false)">
+      <mu-appbar title="手势解锁"></mu-appbar>
+        <pattern-lock></pattern-lock>
+    </mu-dialog>
   </div>
 </template>
 
 <script>
+  import Vue from 'vue'
+  import { mapGetters, mapMutations } from 'vuex'
+  import PatternLock from './common/PatternLock.vue'
   import utils from '../utils'
+  Vue.component('pattern-lock', PatternLock)
   export default {
     name: 'login',
     data () {
       return {
         loading: false,
         showDialog: false,
+        lock: false,
         msg: '',
         model: {
           loginCode: '8601000068',
-          loginPwd: '1234561'
+          loginPwd: '123456'
         }
       }
     },
@@ -76,9 +86,18 @@
           })
         },1000)
       },
-      toggleDialog (isShow) {
-        this.showDialog = isShow
+      ...mapMutations({
+        lockScreen: 'LOCK_SCREEN'
+      }),
+      toggleLock (isShow) {
+        this.lock = isShow
       }
+    },
+    computed: {
+      ...mapGetters([
+        'isLockScreen'
+      ])
+      
     },
     mounted () {
       this.$store.commit('TOGGLE_TAB', false)
@@ -87,5 +106,16 @@
 </script>
 
 <style>
-
+  .dialog-lock{
+    width:100%;
+    height:100%;
+  }
+  .dialog-body{
+    padding:0;
+    width:100%;
+    height:100%;
+    text-align:center;
+    background:url(../assets/lock-bg.jpg);
+    background-size:cover;
+  }
 </style>

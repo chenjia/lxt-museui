@@ -1,39 +1,21 @@
 import utils from '../../utils'
 
 const types = {
-	ADD_PRODUCT: 'ADD_PRODUCT',
-	TOGGLE_TAB: 'TOGGLE_TAB'
+	TOGGLE_TAB: 'TOGGLE_TAB',
+	LOCK_SCREEN: 'LOCK_SCREEN'
 }
 
 const state = {
-	hasFooter: true,
-	productList: [{
-		name: 'product A',
-		price: 18,
-		isHot: true
-	}, {
-		name: 'product B',
-		price: 28,
-		isHot: false
-	}, {
-		name: 'product C',
-		price: 38,
-		isHot: true
-	}]
+	lockScreen: false,
+	hasFooter: true
 }
 
 const getters = {
-	getTab: () => {
-		return state.hasFooter
+	isLockScreen: () => {
+		return state.lockScreen
 	},
-	getHotProductlist: state => {
-		return state.productList.map(product => {
-			if (product.isHot) {
-				return product
-			} else {
-				return {}
-			}
-		})
+	isShowFooter: () => {
+		return state.hasFooter
 	}
 }
 
@@ -54,11 +36,11 @@ const actions = {
 }
 
 const mutations = {
-	[types.ADD_PRODUCT](state, product) {
-		state.productList.push(product)
-	},
 	[types.TOGGLE_TAB](state, show) {
 		state.hasFooter = show
+	},
+	[types.LOCK_SCREEN](state, isLock) {
+		state.lockScreen = isLock
 	}
 }
 

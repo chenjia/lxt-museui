@@ -46,8 +46,8 @@ import {
 } from 'vue-swipe'
 import '@/assets/css/main.css'
 import '@/filters/globalFilter.js'
-import '@/assets/lib/DES3.js'
-import '@/assets/lib/md5-min.js'
+import '@/assets/lib/security/DES3.js'
+import '@/assets/lib/security/md5-min.js'
 import finger from '@/directives/finger.js'
 
 Vue.use(MuseUI)

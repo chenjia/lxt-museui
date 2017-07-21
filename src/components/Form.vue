@@ -62,12 +62,6 @@
         <mu-checkbox style="margin-top:11px;" disabled label="禁用　" :value="true"/>
         <mu-checkbox style="margin:11px 0 0 30px;" disabled label="禁用　"/>
       </div>
-
-      <div class="field">
-        <label></label>
-        <mu-checkbox style="margin-top:11px;" uncheckIcon="favorite_border" checkedIcon="favorite" label="策妹子"/>
-        <mu-checkbox style="margin:11px 0 0 30px;" uncheckIcon="lock_open" checkedIcon="lock" label="锁定"/>
-      </div>
       
       <div class="field">
         <label>单选框</label>
@@ -117,6 +111,6 @@
     flex:0 0 100px;
     font-size:16px;
     height:56px;
-    line-height:46px;
+    line-height:44px;
   }
 </style>

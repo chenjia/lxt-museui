@@ -90,6 +90,7 @@
                     title:'密码设置成功',
                     state:'success'
                   }
+                  oldPattern = newPattern
                 }else{
                   this.lock = {
                     prevPattern:null,
@@ -114,7 +115,6 @@
                 }
                 patternLock.reset()
               }
-              
             }
           }
         }

@@ -48,10 +48,11 @@ import '@/assets/css/main.css'
 import '@/filters/globalFilter.js'
 import '@/assets/lib/security/DES3.js'
 import '@/assets/lib/security/md5-min.js'
-import finger from '@/directives/finger.js'
+import '@/assets/lib/finger/alloy_finger.js'
+import '@/assets/lib/finger/alloy_finger.vue.js'
 
 Vue.use(MuseUI)
-Vue.use(finger)
+Vue.use(AlloyFingerVue)
 Vue.component('swipe', Swipe)
 Vue.component('swipe-item', SwipeItem)
 Vue.config.productionTip = false

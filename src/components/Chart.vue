@@ -8,25 +8,25 @@
     <mu-content-block class="has-header has-footer" v-bind:style="{height:contentHeight+'px'}">
       <swipe class="swipe-home" :auto="auto">
         <swipe-item>
-          <div v-echarts="{options: barOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:bar="{options: barOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: lineOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:line="{options: lineOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: pieOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:pie="{options: pieOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: radarOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:radar="{options: radarOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: funnelOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:funnel="{options: funnelOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: gaugeOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:gauge="{options: gaugeOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
         <swipe-item>
-          <div v-echarts="{options: mapOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
+          <div v-echarts:map="{options: mapOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
         </swipe-item>
       </swipe>
     </mu-content-block>

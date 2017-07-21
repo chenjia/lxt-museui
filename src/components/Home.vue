@@ -100,7 +100,7 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
+            <div @click="go('loading')">
               <mu-icon value="refresh" color="#40e0d0"/>
               <span>加载图标</span>
             </div>

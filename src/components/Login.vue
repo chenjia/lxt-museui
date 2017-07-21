@@ -75,9 +75,9 @@
         this.toggleDialog(true)
         setTimeout(()=>{
           utils.http.post(params).then((response) => {
-            this.toggleDialog(false)
             this.loading = false
             if(response.data.packageList.packages.header.responseCode == '0') {
+              this.toggleDialog(false)
               this.msg = ''
               this.$router.push('/page/home')
             } else {
@@ -91,6 +91,9 @@
       }),
       toggleLock (isShow) {
         this.lock = isShow
+      },
+      toggleDialog (showLoginDialog) {
+        this.showDialog = showLoginDialog
       }
     },
     computed: {

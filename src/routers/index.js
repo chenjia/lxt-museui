@@ -58,6 +58,11 @@ const router = new Router({
         require.ensure([], () => resolve(require('../components/Form.vue')), 'form')
       }
     }, {
+      path: 'loading',
+      component: function(resolve) {
+        require.ensure([], () => resolve(require('../components/Loading.vue')), 'form')
+      }
+    }, {
       path: 'test',
       component: function(resolve) {
         require.ensure([], () => resolve(require('../components/Test.vue')), 'test')

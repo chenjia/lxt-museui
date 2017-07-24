@@ -1,7 +1,7 @@
 import axios from 'axios'
 import format from './format'
 
-var instance = axios.create({
+let instance = axios.create({
   timeout: 60000,
   method: 'post',
   headers: {

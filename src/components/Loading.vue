@@ -2,31 +2,53 @@
   <div class="page">
     <mu-appbar title="加载">
       <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
-      <mu-icon-button @click="toggleLoading" icon="person" slot="right"/>
+      <mu-icon-button @click="toggleLoading" icon="alarm" slot="right"/>
     </mu-appbar>
 
     <mu-content-block class="has-header has-footer"v-bind:style="{height:contentHeight+'px'}">
       <mu-list>
         <mu-list-item :disableRipple=true style="position:relative;">
-          <mu-circular-progress :style="{'background-image':value==100?'url(../assets/head.jpg)':'url(../assets/head_bg.jpg)'}" style="transition:2s all;background-size:cover;border-radius:50%;" mode="determinate" :size="80" :color="color" :value="value"/>
-          <div :style="{color:value==100?'#4caf50':''}" style="position:absolute;top:45px;left:120px;display:inline-block;height:80px;transition:2s all;">上传头像示例</div>
+          <mu-circular-progress :style="{'background-image':value==100?'url(../assets/head.jpg)':'url(../assets/head_bg.jpg)'}" style="transition:1s all;background-size:cover;border-radius:50%;" mode="determinate" :size="80" :color="color" :value="value"/>
+          <div :style="{color:value==100?'#4caf50':''}" style="position:absolute;top:45px;left:120px;display:inline-block;height:80px;transition:1s all;">上传头像示例</div>
         </mu-list-item>
         <mu-divider/>
+
         <mu-list-item :disableRipple=true style="position:relative;">
           <p :style="{color:value==100?'#4caf50':''}" style="text-align:center;transition:2s all;">进度读取示例{{value}}%</p>
           <mu-linear-progress mode="determinate" :color="color" :value="value"/>
         </mu-list-item>
         <mu-divider/>
-        <mu-list-item :disableRipple=true style="position:relative;">
-          <mu-circular-progress :size="80" :strokeWidth="5"/>
-          <div style="position:absolute;top:45px;left:120px;display:inline-block;height:80px;">无限加载示例</div>
-        </mu-list-item>
-        <mu-divider/>
-        <mu-list-item :disableRipple=true style="position:relative;">
-          <p style="text-align:center;">无限进度示例</p>
-          <mu-linear-progress />
-        </mu-list-item>
 
+        <mu-stepper :activeStep="activeStep">
+          <mu-step>
+            <mu-step-label>
+              <mu-icon v-if="value>=20" slot="icon" value="check_circle" color="green"/>
+            </mu-step-label>
+          </mu-step>
+          <mu-step>
+            <mu-step-label>
+              <mu-icon v-if="value>=40" slot="icon" value="check_circle" color="green"/>
+            </mu-step-label>
+          </mu-step>
+          <mu-step>
+            <mu-step-label>
+              <mu-icon v-if="value>=60" slot="icon" value="check_circle" color="green"/>
+            </mu-step-label>
+          </mu-step>
+          <mu-step>
+            <mu-step-label>
+              <mu-icon v-if="value>=80" slot="icon" value="check_circle" color="green"/>
+            </mu-step-label>
+          </mu-step>
+          <mu-step>
+            <mu-step-label>
+              <mu-icon v-if="value>=100" slot="icon" value="check_circle" color="green"/>
+            </mu-step-label>
+          </mu-step>
+        </mu-stepper>
+        <mu-divider/>
+
+        
       </mu-list>
 
       
@@ -44,6 +66,7 @@
         contentHeight: window.globalConfig.contentHeight(true),
         color: 'deepPurple500',
         loading: false,
+        stepColor: 'primary',
         value: 0
       }
     },
@@ -53,6 +76,11 @@
           this.value = 0
         }
         this.loading = !this.loading
+      }
+    },
+    computed: {
+      activeStep () {
+        return parseInt(this.value * 0.05)
       }
     },
     mounted () {

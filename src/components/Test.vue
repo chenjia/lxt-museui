@@ -6,12 +6,7 @@
     </mu-appbar>
 
     <mu-content-block class="has-header has-footer">
-      <div v-for="item in getProductList">
-        <p>{{item.name}}</p>
-      </div>
-      <p>
-        <button @click="getHotProductList">hot product</button>
-      </p>
+      {{bbb}}
     </mu-content-block>
   </div>
 </template>
@@ -21,17 +16,17 @@
     name: 'test',
     data () {
       return {
-        
+        msg: 'fdsfwefew'
       }
     },
     methods: {
-      getHotProductList () {
-        this.$store.state.common.productList = this.$store.getters.getHotProductlist
+      aaa () {
+        return 'bbb'
       }
     },
     computed:{
-      getProductList () {
-        return this.$store.state.common.productList
+      bbb () {
+        return 'hello ' + this.msg
       }
     },
     mounted () {

@@ -11,37 +11,29 @@
     </mu-appbar>
     
     <mu-content-block class="has-header content-customer" style="padding:0;" v-bind:style="{height:contentHeight+'px'}">
-      <template v-if="activeTab == 'tab1' || activeTab == 'tab2'">
-        <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
-      </template>
-      
       <div v-show="activeTab === 'tab1'">
-        <mu-list>
-          <template v-for="item in list1">
-            <mu-list-item :title="item"/>
-            <mu-divider/>
-          </template>
-        </mu-list>
+        <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
+        <template v-for="item in list1">
+          <mu-list-item :title="item"/>
+          <mu-divider/>
+        </template>
         <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="拼命加载中..."/>
       </div>
       <div v-show="activeTab === 'tab2'">
-        <mu-list>
-          <template v-for="item in list2">
-            <mu-list-item :title="item"/>
-            <mu-divider/>
-          </template>
-        </mu-list>
+        <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
+        <template v-for="item in list2">
+          <mu-list-item :title="item"/>
+          <mu-divider/>
+        </template>
         <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="拼命加载中..."/>
       </div>
       <div v-show="activeTab === 'tab3'">
-        <mu-list>
           <template v-for="item in list3">
             <mu-list-item disableRipple :title="item.displayName" :describeText="item.phoneNumbers?item.phoneNumbers[0].value:'　'">
               <mu-avatar :src="head" slot="leftAvatar"/>
             </mu-list-item>
             <mu-divider/>
           </template>
-        </mu-list>
       </div>
     </mu-content-block>
   </div>
@@ -79,7 +71,16 @@
           this.list1.push('准客户' + (i + 1))
           this.list2.push('老客户' + (i + 1))
         }
+
+        // for (let i = 0; i < 300; i++) {
+        //   this.list3.push({
+        //     displayName:'网络客户' + (i + 1),
+        //     phoneNumbers: [{value:'18702189255'}]
+        //   })
+        // }
       }, 1)
+
+
     },
     methods: {
       handleTabChange (val) {
@@ -93,7 +94,7 @@
               console.log(contacts)
               let time2 = new Date().getTime()
               console.log(time2 - time1)
-              this.list3 = contacts
+              this.list3 = contacts.slice(0,10)
             }, (contactError) => {
               console.log(contactError)
               alert('Error')

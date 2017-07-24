@@ -8,8 +8,8 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve with hot reload at localhost:8888
+npm run dev 或者 npm start
 
 # build for production with minification
 npm run build
@@ -18,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+在线访问demo地址：http://lxtvue.butterfly.mopaasapp.com/#/home

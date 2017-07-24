@@ -11,7 +11,7 @@
 
 <script>
   import '../../assets/lib/patternLock/patternLock.css'
-  import '../../assets/lib/jquery/dist/jquery.min.js'
+  import '../../assets/lib/jquery/jquery.min.js'
   import '../../assets/lib/patternLock/patternLock.js'
   import { mapMutations } from 'vuex'
   import utils from '../../utils'

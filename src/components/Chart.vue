@@ -5,30 +5,38 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header">
-      <swipe class="swipe-home" :auto="auto">
-        <swipe-item>
-          <div v-echarts:bar="{options: barOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:line="{options: lineOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:pie="{options: pieOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:radar="{options: radarOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:funnel="{options: funnelOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:gauge="{options: gaugeOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-        <swipe-item>
-          <div v-echarts:map="{options: mapOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
-        </swipe-item>
-      </swipe>
+    <mu-content-block class="has-header" style="padding:0;">
+      <div v-if="activeTab === 'tab1'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:bar="{options: barOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab2'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:bar="{options: lineOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab3'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:pie="{options: pieOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab4'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:radar="{options: radarOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab5'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:funnel="{options: funnelOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab6'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:gauge="{options: gaugeOptions}"></div>
+      </div>
+      <div v-if="activeTab === 'tab7'" :style="{width: '100%',height:contentHeight+'px'}">
+        <div v-echarts:map="{options: mapOptions}"></div>
+      </div>
+
+      <mu-tabs :value="activeTab" @change="handleTabChange">
+        <mu-tab value="tab1" title="柱"/>
+        <mu-tab value="tab2" title="线"/>
+        <mu-tab value="tab3" title="园"/>
+        <mu-tab value="tab4" title="雷"/>
+        <mu-tab value="tab5" title="漏"/>
+        <mu-tab value="tab6" title="仪"/>
+        <mu-tab value="tab7" title="地"/>
+      </mu-tabs>
     </mu-content-block>
   </div>
 </template>
@@ -40,10 +48,11 @@
     name: 'chart',
     data () {
       return {
+        activeTab: 'tab1',
         auto: 99999,
         state: true,
         screenWidth: window.globalConfig.screenWidth,
-        contentHeight: window.globalConfig.contentHeight(true),
+        contentHeight: window.globalConfig.contentHeight(true,true),
         barOptions: {
           tooltip: {},
           xAxis: {
@@ -365,6 +374,9 @@
       }
     },
     methods: {
+      handleTabChange (value) {
+        this.activeTab = value
+      },
       trigger () {
         this.state = !this.state
       }

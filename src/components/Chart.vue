@@ -5,7 +5,7 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header has-footer" v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header">
       <swipe class="swipe-home" :auto="auto">
         <swipe-item>
           <div v-echarts:bar="{options: barOptions}" v-bind:style="{width: (screenWidth-20)+'px', height: (contentHeight-100)+'px'}"></div>
@@ -370,7 +370,6 @@
       }
     },
     mounted: function () {
-      this.$store.commit('TOGGLE_TAB', false)
       setInterval(() => {
         this.gaugeOptions = {
           tooltip: {

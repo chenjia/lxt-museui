@@ -5,7 +5,7 @@
       <mu-icon-button @click="toggleLoading" icon="alarm" slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header has-footer"v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header has-footer">
       <mu-list>
         <mu-list-item :disableRipple=true style="position:relative;">
           <mu-circular-progress :style="{'background-image':value==100?'url(../assets/head.jpg)':'url(../assets/head_bg.jpg)'}" style="transition:1s all;background-size:cover;border-radius:50%;" mode="determinate" :size="80" :color="color" :value="value"/>
@@ -47,13 +47,7 @@
           </mu-step>
         </mu-stepper>
         <mu-divider/>
-
-        
       </mu-list>
-
-      
-      
-      
     </mu-content-block>
   </div>
 </template>
@@ -63,7 +57,6 @@
     name: 'loading',
     data () {
       return {
-        contentHeight: window.globalConfig.contentHeight(true),
         color: 'deepPurple500',
         loading: false,
         stepColor: 'primary',
@@ -84,7 +77,6 @@
       }
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', false)
       setInterval(()=>{
         if(this.loading){
           this.value += parseInt(Math.random()*10)

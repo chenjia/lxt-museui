@@ -51,13 +51,15 @@ import '@/assets/lib/security/md5-min.js'
 import '@/assets/lib/finger/alloy_finger.js'
 import '@/assets/lib/finger/alloy_finger.vue.js'
 
+// MuseUI.config({
+//   disableTouchRipple: true,
+//   disableFocusRipple: true
+// })
 Vue.use(MuseUI)
 Vue.use(AlloyFingerVue)
 Vue.component('swipe', Swipe)
 Vue.component('swipe-item', SwipeItem)
 Vue.config.productionTip = false
-
-
 
 new Vue({
   el: '#app',

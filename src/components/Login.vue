@@ -5,7 +5,7 @@
       <mu-icon-button @click="lockScreen(true)" icon="lock" slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header has-footer">
+    <mu-content-block class="has-header">
       <div style="text-align:center;">
         <mu-text-field label="用户名" v-model="model.loginCode" labelFloat/><br/>
         <mu-text-field label="密码" v-model="model.loginPwd" labelFloat/><br/>
@@ -35,9 +35,9 @@
 
 <script>
   import Vue from 'vue'
+  import utils from '../utils'
   import { mapGetters, mapMutations } from 'vuex'
   import PatternLock from './common/PatternLock.vue'
-  import utils from '../utils'
   Vue.component('pattern-lock', PatternLock)
   export default {
     name: 'login',
@@ -46,7 +46,7 @@
         loading: false,
         showDialog: false,
         lock: false,
-        msg: '',
+        msg: 'aaa',
         model: {
           loginCode: '8601000068',
           loginPwd: '123456'
@@ -79,6 +79,8 @@
             if(response.data.packageList.packages.header.responseCode == '0') {
               this.toggleDialog(false)
               this.msg = ''
+              utils.cache.set('user', response.data.packageList.packages.response.user)
+              this.$store.commit('LOGIN', utils.cache.get('user'))
               this.$router.push('/page/home')
             } else {
               this.msg = response.data.packageList.packages.header.errorMessage.substr(0,10)
@@ -100,10 +102,10 @@
       ...mapGetters([
         'isLockScreen'
       ])
-      
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', false)
+      console.log(DES3.encrypt('','chenjia'))
+      console.log(DES3.decrypt('',DES3.encrypt('','chenjia')))
     }
   }
 </script>

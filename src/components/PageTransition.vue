@@ -13,6 +13,7 @@
         </mu-bottom-nav>
       </mu-paper>
     </transition>
+    <mu-snackbar v-if="$store.state.common.toast" :message="$store.state.common.toastMsg" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
   </div>
 </template>
 
@@ -28,6 +29,9 @@
       }
     },
     methods: {
+      hideSnackbar () {
+        this.$store.commit('TOGGLE_TOAST', false)
+      },
       handleChange (val) {
         this.bottomNav = val
       }

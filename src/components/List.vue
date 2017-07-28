@@ -6,12 +6,20 @@
     </mu-appbar>
 
     <mu-dialog :open="openSearch" @close="closeSearch">
-      <div style="position:relative;margin-bottom:50px;">
-        <mu-appbar title="搜索"></mu-appbar>
+      <mu-appbar title="搜索"></mu-appbar>
+      <div style="padding:10px 15px;">
+        <div class="field">
+          <label style="flex:0 0 50px;">姓名</label>
+          <mu-text-field fullWidth />
+        </div>
+        <div class="field">
+          <label style="flex:0 0 50px;">性别</label>
+          <mu-radio style="margin-top:11px;" label="男" name="gender" nativeValue="M" v-model="gender"/>
+          <mu-radio style="margin:11px 0 0 30px;" label="女" name="gender" nativeValue="F" v-model="gender"/>
+        </div>
       </div>
-      <p>fjewifwjeiofwejfio</p>
       <mu-flat-button slot="actions" icon="clear" @click="closeSearch" label="取消"/>
-      <mu-flat-button slot="actions" icon="done" @click="closeSearch" label="确定" primary/>
+      <mu-flat-button slot="actions" icon="search" @click="closeSearch" label="搜索" primary/>
     </mu-dialog>
     
     <mu-content-block class="has-header has-footer content-list" style="padding-top:0;">
@@ -34,6 +42,7 @@
     name: 'customer',
     data () {
       return {
+        gender: '1',
         head: require('../assets/head.jpg'),
         list: [],
         num: 10,
@@ -97,3 +106,6 @@
     }
   }
 </script>
+<style>
+
+</style>

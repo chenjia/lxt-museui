@@ -5,7 +5,7 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
     
-    <mu-content-block class="has-header content-contact" style="padding-top:5px;" v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header content-contact">
       <mu-text-field style="width:100%;" v-model="m.searchKey" hintText="输入联系人姓名查找"/>
       <mu-sub-header id="热" style="line-height:22px">常用联系人</mu-sub-header>
       <template v-for="item in contactData.hot">
@@ -77,7 +77,6 @@
       }
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', false)
       this.scroller = document.getElementsByClassName('content-contact')[0]
       this.trigger = this.$el
       for(var i=0;i<10;i++){

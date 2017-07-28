@@ -5,7 +5,7 @@
       <mu-icon-button href="#/page/login" icon="person" slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header has-footer"v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header has-footer">
       {{msg}}
     </mu-content-block>
   </div>
@@ -17,7 +17,6 @@
     data () {
       return {
         state: true,
-        contentHeight: window.globalConfig.contentHeight(true),
         msg: 'About page'
       }
     },
@@ -27,7 +26,7 @@
       }
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', true)
+      
     }
   }
 </script>

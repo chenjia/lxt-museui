@@ -5,7 +5,7 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
 
-    <mu-content-block class="has-header" v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header">
       <div class="field">
         <label>普通文本框</label>
         <mu-text-field fullWidth />
@@ -91,26 +91,14 @@
     data () {
       return {
         errorText: '又输错啦',
-        selectData: ['阴阳师', '影之刃', '天下HD', '穿越火线', '英雄联盟', '王者荣耀'],
-        contentHeight: window.globalConfig.contentHeight(true)
+        selectData: ['阴阳师', '影之刃', '天下HD', '穿越火线', '英雄联盟', '王者荣耀']
       }
     },
     methods: {
       
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', false)
+      
     }
   }
 </script>
-<style scoped>
-  .field{
-    display:flex;
-  }
-  .field label:first-child{
-    flex:0 0 100px;
-    font-size:16px;
-    height:56px;
-    line-height:44px;
-  }
-</style>

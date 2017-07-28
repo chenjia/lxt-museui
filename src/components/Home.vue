@@ -106,24 +106,21 @@
             </div>
           </td>
           <td>
-            <div v-bind:href="'#/page/list'">
-              <mu-icon value="date_range" color="#cd5c5c"/>
-              <span>日历</span>
+            <div @click="go('map')">
+              <mu-icon value="map" color="#cd5c5c"/>
+              <span>地图</span>
             </div>
           </td>
         </tr>
         <tr>
           <td>
-            <div v-bind:href="'#/page/list'">
-              <mu-icon value="map" color="#ffa500"/>
-              <span>地图</span>
-            </div>
-          </td>
-          <td>
             <div @click="go('test')">
               <mu-icon value="build" color="#ffa500"/>
               <span>测试</span>
             </div>
+          </td>
+          <td>
+            
           </td>
           <td>
 
@@ -148,7 +145,6 @@ export default {
   name: 'home',
   data () {
     return {
-      contentHeight: window.globalConfig.contentHeight(true, true),
       theme: 'default',
       themes: {
         dft,
@@ -199,7 +195,6 @@ export default {
     }
   },
   mounted () {
-    this.$store.commit('TOGGLE_TAB', true)
     this.triggerThemes = this.$refs.buttonThemes.$el
   }
 }

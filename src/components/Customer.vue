@@ -10,7 +10,7 @@
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
     
-    <mu-content-block class="has-header content-customer" style="padding:0;" v-bind:style="{height:contentHeight+'px'}">
+    <mu-content-block class="has-header content-customer" style="padding-top:0;">
       <div v-show="activeTab === 'tab1'">
         <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="refresh"/>
         <template v-for="item in list1">
@@ -58,12 +58,10 @@
         refreshing: false,
         trigger: null,
         loaded: false,
-        contentHeight: window.globalConfig.contentHeight(true, false),
         activeTab: 'tab1'
       }
     },
     mounted () {
-      this.$store.commit('TOGGLE_TAB', false)
       this.scroller = document.getElementsByClassName('content-customer')[0]
       this.trigger = this.$el
       setTimeout(() => {

@@ -20,8 +20,8 @@
           <p>登录中，请稍等...</p>
           <mu-linear-progress />
         </div>
-        <div v-else class="center">
-          {{msg}}<br/><br/>
+        <div v-else class="center" style="line-height:24px;">
+          <p color="red"><a>{{msg}}</a></p>
           <mu-raised-button style="width:100%;" slot="actions" primary @click="toggleDialog(false)" label="确定"/>
         </div>
     </mu-dialog>
@@ -48,7 +48,7 @@
         lock: false,
         msg: 'aaa',
         model: {
-          loginCode: '8601000068',
+          loginCode: '13701263621',
           loginPwd: '123456'
         }
       }

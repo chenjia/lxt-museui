@@ -21,16 +21,25 @@
     mounted () {
       window.mapCallback = BMap => {
         const map = new BMap.Map("mapBox")
-        const point = new BMap.Point(121.7443650000,31.1506170000)
-        map.addOverlay(new BMap.Marker(point))
-        map.centerAndZoom(point,15)
+        
 
         navigator.geolocation.getCurrentPosition(function(position){
-          alert(position)
           const currentLat = position.coords.latitude
           const currentLon = position.coords.longitude
           const gpsPoint = new BMap.Point(currentLon, currentLat)
-          map.centerAndZoom(gpsPoint,15)
+
+          var convertor = new BMap.Convertor();
+          var pointArr = [];
+          pointArr.push(gpsPoint);
+          convertor.translate(pointArr, 1, 5, function(data){
+            console.log(data)
+            if(data.status === 0) {
+              var marker = new BMap.Marker(data.points[0]);
+              map.addOverlay(marker);
+              map.centerAndZoom(data.points[0],15)
+              map.addControl(new BMap.NavigationControl())
+            }
+          })
         }, function(err){
           console.log(err)
           alert(err.message)

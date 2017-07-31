@@ -31,7 +31,7 @@
       <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="tab1" title="柱"/>
         <mu-tab value="tab2" title="线"/>
-        <mu-tab value="tab3" title="园"/>
+        <mu-tab value="tab3" title="圆"/>
         <mu-tab value="tab4" title="雷"/>
         <mu-tab value="tab5" title="漏"/>
         <mu-tab value="tab6" title="仪"/>

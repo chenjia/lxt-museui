@@ -9,7 +9,7 @@
 npm install
 
 # serve with hot reload at localhost:8888
-npm run dev 或者 npm start
+npm run dev or npm start
 
 # build for production with minification
 npm run build

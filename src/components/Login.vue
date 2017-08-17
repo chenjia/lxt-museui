@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mu-appbar title="登录">
-      <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
+      <mu-icon-button @click="back" icon="chevron_left" slot="left"/>
       <mu-icon-button @click="lockScreen(true)" icon="lock" slot="right"/>
     </mu-appbar>
 

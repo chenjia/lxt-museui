@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mu-appbar title="通讯录">
-      <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
+      <mu-icon-button @click="back" icon="chevron_left" slot="left"/>
       <mu-icon-button disabled slot="right"/>
     </mu-appbar>
     
@@ -17,7 +17,7 @@
         <i :id="key"></i>
         <template v-for="(item, index) in value">
           <mu-list-item :title="item.name" :inset="index!=0">
-            <mu-avatar src="../assets/head_bg.jpg" slot="rightAvatar"/>
+            <mu-avatar :src="head" slot="rightAvatar"/>
             <mu-avatar v-if="index==0" color="orange" style="margin-left:-8px;" backgroundColor="transparent" slot="leftAvatar">{{key}}</mu-avatar>
           </mu-list-item>
           <mu-divider v-if="index==value.length-1" inset/>

@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mu-appbar title="列表">
-      <mu-icon-button @click="goBack" icon="chevron_left" slot="left"/>
+      <mu-icon-button @click="back" icon="chevron_left" slot="left"/>
       <mu-icon-button @click="showSearch" icon="search" slot="right"/>
     </mu-appbar>
 
@@ -68,9 +68,6 @@
       }, 1)
     },
     methods: {
-      goBack () {
-        this.$router.goBack()
-      },
       showSearch () {
         this.openSearch = true
       },

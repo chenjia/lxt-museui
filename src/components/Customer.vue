@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mu-appbar>
-      <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
+      <mu-icon-button @click="back" icon="chevron_left" slot="left"/>
       <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="tab1" title="准客户"/>
         <mu-tab value="tab2" title="老客户"/>

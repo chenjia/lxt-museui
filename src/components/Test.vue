@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <mu-appbar title="我的">
-      <mu-icon-button href="#/page/home" icon="chevron_left" slot="left"/>
+      <mu-icon-button @click="back" icon="chevron_left" slot="left"/>
       <mu-icon-button href="#/page/login" icon="person" slot="right"/>
     </mu-appbar>
 

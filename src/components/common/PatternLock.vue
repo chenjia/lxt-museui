@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%text-align:center" v-bind:style="{'padding-top':(contentHeight-310)/2+'px'}">
+  <div style="width:100%text-align:center" :style="{'padding-top':(contentHeight-310)/2+'px'}">
     <div class="mhn-lock-title">
       <span v-bind:class="{'mu-flat-button-stable':lock.state=='stable','mu-flat-button-primary':lock.state=='success','mu-flat-button-secondary':lock.state=='failure'}">{{lock.title}}</span>
     </div>

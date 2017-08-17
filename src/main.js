@@ -61,6 +61,17 @@ Vue.component('swipe', Swipe)
 Vue.component('swipe-item', SwipeItem)
 Vue.config.productionTip = false
 
+Vue.mixin({
+  methods: {
+    go(url) {
+      this.$router.push(url)
+    },
+    back() {
+      router.goBack()
+    }
+  }
+})
+
 new Vue({
   el: '#app',
   router,

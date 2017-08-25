@@ -18,4 +18,4 @@ npm run build
 npm run build --report
 ```
 
-在线访问demo地址：http://lxtvue.butterfly.mopaasapp.com
+在线访问demo地址：https://chenjia.github.io/lxtVue/demo/index.html

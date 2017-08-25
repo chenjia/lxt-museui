@@ -70,22 +70,15 @@
           "deviceNo": '666666',
           "deviceType": "ios"
         };
-
         this.loading = true
         this.toggleDialog(true)
         setTimeout(()=>{
-          utils.http.post(params).then((response) => {
-            this.loading = false
-            if(response.data.packageList.packages.header.responseCode == '0') {
-              this.toggleDialog(false)
-              this.msg = ''
-              utils.cache.set('user', response.data.packageList.packages.response.user)
-              this.$store.commit('LOGIN', utils.cache.get('user'))
-              this.$router.push('/page/home')
-            } else {
-              this.msg = response.data.packageList.packages.header.errorMessage.substr(0,10)
-            }
-          })
+          this.loading = false
+          this.toggleDialog(false)
+          this.msg = ''
+          utils.cache.set('user', {})
+          this.$store.commit('LOGIN', utils.cache.get('user'))
+          this.$router.push('/page/home')
         },1000)
       },
       ...mapMutations({
